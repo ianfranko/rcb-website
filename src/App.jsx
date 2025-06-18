@@ -12,12 +12,14 @@ import About from './components/About';
 import Events from './components/Events';
 import Venues from './components/Venues';
 import NewsBlogs from './components/NewsBlogs';
+import Booking from './components/Booking';
 
 // Placeholder page components
 function HomePage() {
   return (
     <>
       <Hero />
+      <Booking />
       <QuickStats />
       <FeaturesStrip />
       <UpcomingEvents />
