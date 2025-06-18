@@ -5,7 +5,7 @@ export default function Hero() {
         src="/kigali-center.jpg"
         alt="Kigali Convention Center"
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
-        onError={e => { e.target.src = '/vite.svg'; }}
+        onError={e => { e.target.src = ''; }}
       />
       <div className="absolute inset-0 bg-black/70 z-10" />
       <div className="relative z-20 text-center text-white px-4">
