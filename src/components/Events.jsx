@@ -27,86 +27,65 @@ const quickLinks = [
   { name: "Contact us", link: "#" }
 ];
 
+// Subcomponent: SuppliersList
+const SuppliersList = ({ categories }) => (
+  <section className="events-section">
+    <h2>Suppliers</h2>
+    <div className="suppliers-list">
+      {categories.map((cat, i) => (
+        <div key={i} className="supplier-category">{cat}</div>
+      ))}
+    </div>
+  </section>
+);
+
+// Subcomponent: DownloadableGuides
+const DownloadableGuides = ({ guides }) => (
+  <section className="events-section">
+    <h2>Downloadable Guides</h2>
+    <div className="guides-list">
+      {guides.map((guide, i) => (
+        <a
+          key={i}
+          href={guide.link}
+          className="guide-link"
+          download
+        >
+          {guide.name}
+        </a>
+      ))}
+    </div>
+  </section>
+);
+
+// Subcomponent: QuickLinks
+const QuickLinks = ({ links }) => (
+  <section className="events-section">
+    <h2>Quick Links</h2>
+    <ul className="quick-links">
+      {links.map((link, i) => (
+        <li key={i}>
+          <a href={link.link} className="quick-link-anchor">{link.name}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+);
+
 const Events = () => (
-  <div style={{ padding: '2rem', maxWidth: 900, margin: '0 auto', fontFamily: 'sans-serif' }}>
-    <header style={{ marginBottom: '2rem', textAlign: 'center' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Plan Your Event</h1>
-      <p style={{ fontSize: '1.2rem', color: '#fff' }}>
+  <div className="events-container">
+    <header className="events-header">
+      <h1 className="events-title">Plan Your Event</h1>
+      <p className="events-description">
         Let us be your first point of contact to assist you organize memorable events.<br />
         <strong>Plan your event with us.</strong>
       </p>
-      <a href="mailto:sales.marketing@rcb.rw" style={{
-        display: 'inline-block',
-        marginTop: '1rem',
-        padding: '0.75rem 1.5rem',
-        background: '#007b5e',
-        color: '#fff',
-        borderRadius: '5px',
-        textDecoration: 'none',
-        fontWeight: 'bold',
-        letterSpacing: '0.5px'
-      }}>Contact: sales.marketing@rcb.rw</a>
+      <a href="mailto:sales.marketing@rcb.rw" className="events-contact">Contact: sales.marketing@rcb.rw</a>
     </header>
-
-    <section style={{ marginBottom: '2.5rem' }}>
-      <h2>Suppliers</h2>
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.75rem',
-        color: '#fff',
-        lineHeight: 1.7
-      }}>
-        {supplierCategories.map((cat, i) => (
-          <div key={i} style={{ padding: '0.5rem 0', borderBottom: i !== supplierCategories.length - 1 ? '1px solid #444' : 'none' }}>{cat}</div>
-        ))}
-      </div>
-    </section>
-
-    <section style={{ marginBottom: '2.5rem' }}>
-      <h2>Downloadable Guides</h2>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-        {guides.map((guide, i) => (
-          <a
-            key={i}
-            href={guide.link}
-            style={{
-              display: 'inline-block',
-              padding: '1rem 1.5rem',
-              background: '#f5f5f5',
-              borderRadius: '6px',
-              textDecoration: 'none',
-              color: '#007b5e',
-              fontWeight: 'bold',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.06)'
-            }}
-            download
-          >
-            {guide.name}
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <section style={{ marginBottom: '2.5rem' }}>
-      <h2>Quick Links</h2>
-      <ul style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '1rem',
-        listStyle: 'none',
-        padding: 0,
-        margin: 0
-      }}>
-        {quickLinks.map((link, i) => (
-          <li key={i}>
-            <a href={link.link} style={{ color: '#007b5e', textDecoration: 'underline' }}>{link.name}</a>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <footer style={{ textAlign: 'center', color: '#fff', fontSize: '0.95rem', marginTop: '3rem' }}>
+    <SuppliersList categories={supplierCategories} />
+    <DownloadableGuides guides={guides} />
+    <QuickLinks links={quickLinks} />
+    <footer className="events-footer">
       All rights reserved © - Rwanda Convention Bureau
     </footer>
   </div>
